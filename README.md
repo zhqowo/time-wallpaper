@@ -92,6 +92,8 @@ launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/local.zhqowo.timewallpap
 
 ---
 
+![Menu bar](previews/menu.png)
+
 ## Usage
 
 Click the ⛰ icon in the menu bar:

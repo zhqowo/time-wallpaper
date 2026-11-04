@@ -92,6 +92,8 @@ launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/local.zhqowo.timewallpap
 
 ---
 
+![Menu bar](previews/menu.png)
+
 ## 用法
 
 点菜单栏的 ⛰ 图标：
