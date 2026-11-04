@@ -2,6 +2,8 @@
 
 > A macOS menu-bar app that changes your desktop wallpaper according to **the real position of the sun, live weather, season and moon phase** — with 48 hand-crafted Nordic-village wallpapers.
 
+[![Build](https://github.com/zhqowo/time-wallpaper/actions/workflows/build.yml/badge.svg)](https://github.com/zhqowo/time-wallpaper/actions/workflows/build.yml)
+
 **English** · [中文](README.zh-CN.md)
 
 ![Seasons](previews/se_spring.jpg)

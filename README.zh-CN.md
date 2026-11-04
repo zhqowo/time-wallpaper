@@ -2,6 +2,8 @@
 
 > 一个挂在 macOS 菜单栏的小 App：**按太阳的实时高度角、真实天气、天文季节与月相**自动更换桌面壁纸，自带 48 张北欧村落主题壁纸。
 
+[![Build](https://github.com/zhqowo/time-wallpaper/actions/workflows/build.yml/badge.svg)](https://github.com/zhqowo/time-wallpaper/actions/workflows/build.yml)
+
 [English](README.md) · **中文**
 
 ![四季](previews/se_spring.jpg)
