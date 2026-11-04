@@ -1,0 +1,45 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build on macOS
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show Swift version
+        run: swift --version
+
+      - name: Build TimeWallpaper.app
+        run: |
+          cd app
+          chmod +x build.sh
+          ./build.sh
+
+      - name: Verify app bundle
+        run: |
+          set -e
+          BIN=app/TimeWallpaper.app/Contents/MacOS/TimeWallpaper
+          test -x "$BIN"
+          file "$BIN"
+          plutil -lint app/TimeWallpaper.app/Contents/Info.plist
+
+      - name: Verify wallpapers
+        run: |
+          set -e
+          COUNT=$(ls wallpapers/*.jpg | wc -l | tr -d ' ')
+          echo "wallpapers: $COUNT"
+          test "$COUNT" -eq 48
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TimeWallpaper-app
+          path: app/TimeWallpaper.app
+          if-no-files-found: error
