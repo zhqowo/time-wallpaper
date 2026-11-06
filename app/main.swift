@@ -326,7 +326,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
                    "night":"night","predawn":"predawn","dusk":"dusk"]
         guard let k = map[name] else { return name }
         let cand = "se_\(seasonCN())_\(k)"
-        return FileManager.default.fileExists(atPath: "\(WALLDIR)/\(cand).png") ? cand : name
+        return pathOf(cand) != nil ? cand : name
     }
 
     func pathOf(_ n: String) -> String? {
