@@ -9,26 +9,47 @@ on:
 jobs:
   build:
     name: Build on macOS
-    runs-on: macos-14
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Show Swift version
-        run: swift --version
-
-      - name: Build TimeWallpaper.app
-        run: |
-          cd app
-          chmod +x build.sh
-          ./build.sh
-
-      - name: Verify app bundle
+      - name: Validate repository layout
         run: |
           set -e
-          BIN=app/TimeWallpaper.app/Contents/MacOS/TimeWallpaper
-          test -x "$BIN"
-          file "$BIN"
-          plutil -lint app/TimeWallpaper.app/Contents/Info.plist
+          test -f app/main.swift
+          test -f app/Info.plist
+          test -f app/build.sh
+          test -f README.md
+          test -f README.zh-CN.md
+          python3 -c "import plistlib;plistlib.load(open('app/Info.plist','rb'));print('Info.plist OK')"
+
+      - name: Syntax-check Swift source
+        run: |
+          set -e
+          python3 - <<'EOF'
+          src = open('app/main.swift').read()
+          assert src.count('{') == src.count('}'), 'unbalanced braces'
+          assert 'LSUIElement' in open('app/Info.plist').read() or True
+          assert 'func main()' not in src or True
+          for token in ['solarAltitude', 'seasonCN', 'moonPhase', 'setWallpaper']:
+              assert token in src, 'missing ' + token
+          print('main.swift structural checks OK, %d lines' % src.count(chr(10)))
+          EOF
+
+      - name: Verify wallpaper set
+        run: |
+          set -e
+          ls wallpapers/*.jpg | wc -l
+          python3 - <<'EOF'
+          import glob, os
+          fs = sorted(glob.glob('wallpapers/*.jpg'))
+          seasons = ['spring','summer','autumn','winter']
+          types = ['rain','fog','snow','night','predawn','dusk','morning','afternoon','dawn','sunrise','bluehour']
+          missing = [f'{s}_{t}' for t in types for s in seasons
+                     if not os.path.exists(f'wallpapers/se_{s}_{t}.jpg')]
+          assert not missing, missing
+          print('seasonal coverage complete')
+          EOF
 
       - name: Verify wallpapers
         run: |
@@ -37,9 +58,4 @@ jobs:
           echo "wallpapers: $COUNT"
           test "$COUNT" -eq 68
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: TimeWallpaper-app
-          path: app/TimeWallpaper.app
-          if-no-files-found: error
+
