@@ -1,6 +1,6 @@
 # 时间壁纸 · Time Wallpaper
 
-> 一个挂在 macOS 菜单栏的小 App：**按太阳的实时高度角、真实天气、天文季节与月相**自动更换桌面壁纸，自带 48 张北欧村落主题壁纸。
+> 一个挂在 macOS 菜单栏的小 App：**按太阳的实时高度角、真实天气、天文季节与月相**自动更换桌面壁纸，自带 68 张北欧村落主题壁纸。
 
 [![Build](https://github.com/zhqowo/time-wallpaper/actions/workflows/build.yml/badge.svg)](https://github.com/zhqowo/time-wallpaper/actions/workflows/build.yml)
 
@@ -33,18 +33,18 @@
 
 ## 壁纸
 
-48 张，2560×1600。全部由图像模型生成，并按物理常识逐张修正
+68 张，2560×1600。全部由图像模型生成，并按物理常识逐张修正
 （太阳高度角、雪按坡向分布、只有落叶树变色 …… 这些细节都改过）。
 
 | 分组 | 张数 | 例子 |
 |---|---|---|
 | 时段 | 9 | `predawn`、`sunrise`、`dusk`、`bluehour`、`night` |
 | 天气（不分季节的兜底） | 4 | `w_clear`、`w_rain`、`w_fog`、`w_snow` |
-| 季节 × 时段/天气 | 24 | `se_autumn_rain`、`se_winter_night`、`se_spring_dusk` |
+| 季节 × 时段/天气 | 44 | `se_autumn_rain`、`se_winter_night`、`se_spring_dusk`、`se_summer_afternoon` |
 | 季节（白天） | 4 | `se_spring`、`se_summer`、`se_autumn`、`se_winter` |
 | 特殊事件 | 7 | `wx_rainbow`、`wx_cloudsea`、`wx_storm`、`cu_harvest`、`cu_midsummer`、`sk_aurora`、`sk_moonrise` |
 
-命名规则：`se_<季节>_<类型>`，季节 ∈ spring/summer/autumn/winter，类型 ∈ rain/fog/snow/night/predawn/dusk。
+命名规则：`se_<季节>_<类型>`，季节 ∈ spring/summer/autumn/winter，类型 ∈ rain/fog/snow/night/predawn/dusk/morning/afternoon/dawn/sunrise/bluehour。
 缺季节图时自动回退到通用图。
 
 ---

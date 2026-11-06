@@ -35,7 +35,7 @@ jobs:
           set -e
           COUNT=$(ls wallpapers/*.jpg | wc -l | tr -d ' ')
           echo "wallpapers: $COUNT"
-          test "$COUNT" -eq 48
+          test "$COUNT" -eq 68
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

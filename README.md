@@ -1,6 +1,6 @@
 # Time Wallpaper · 时间壁纸
 
-> A macOS menu-bar app that changes your desktop wallpaper according to **the real position of the sun, live weather, season and moon phase** — with 48 hand-crafted Nordic-village wallpapers.
+> A macOS menu-bar app that changes your desktop wallpaper according to **the real position of the sun, live weather, season and moon phase** — with 68 hand-crafted Nordic-village wallpapers.
 
 [![Build](https://github.com/zhqowo/time-wallpaper/actions/workflows/build.yml/badge.svg)](https://github.com/zhqowo/time-wallpaper/actions/workflows/build.yml)
 
@@ -33,18 +33,18 @@ No dependencies. One Swift file, one bundled wallpaper folder.
 
 ## Wallpapers
 
-48 images, 2560×1600, generated with an image model and then corrected against physics
+68 images, 2560×1600, generated with an image model and then corrected against physics
 (the sun's real altitude, snow distribution by slope aspect, only deciduous trees turning colour, etc.).
 
 | Group | Count | Examples |
 |---|---|---|
 | Time of day | 9 | `predawn`, `sunrise`, `dusk`, `bluehour`, `night` |
 | Weather (season-agnostic fallback) | 4 | `w_clear`, `w_rain`, `w_fog`, `w_snow` |
-| Season × time/weather | 24 | `se_autumn_rain`, `se_winter_night`, `se_spring_dusk` |
+| Season × time/weather | 44 | `se_autumn_rain`, `se_winter_night`, `se_spring_dusk`, `se_summer_afternoon` |
 | Season (daytime) | 4 | `se_spring`, `se_summer`, `se_autumn`, `se_winter` |
 | Special events | 7 | `wx_rainbow`, `wx_cloudsea`, `wx_storm`, `cu_harvest`, `cu_midsummer`, `sk_aurora`, `sk_moonrise` |
 
-Naming: `se_<season>_<type>` where season ∈ spring/summer/autumn/winter and type ∈ rain/fog/snow/night/predawn/dusk.
+Naming: `se_<season>_<type>` where season ∈ spring/summer/autumn/winter and type ∈ rain/fog/snow/night/predawn/dusk/morning/afternoon/dawn/sunrise/bluehour.
 Missing seasonal variants automatically fall back to the generic image.
 
 ---

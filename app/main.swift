@@ -323,7 +323,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     // 季节优先：天气/特殊时段若有对应季节版本则优先使用（缺图自动回退通用版）
     func seasonal(_ name: String) -> String {
         let map = ["w_rain":"rain","w_fog":"fog","w_snow":"snow",
-                   "night":"night","predawn":"predawn","dusk":"dusk"]
+                   "night":"night","predawn":"predawn","dusk":"dusk",
+                   "morning":"morning","afternoon":"afternoon",
+                   "dawn":"dawn","sunrise":"sunrise","bluehour":"bluehour"]
         guard let k = map[name] else { return name }
         let cand = "se_\(seasonCN())_\(k)"
         return pathOf(cand) != nil ? cand : name
